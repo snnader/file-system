@@ -1,0 +1,25 @@
+
+File System Structure: consists of 4096 blocks
+
+    10 Metadata blocks:
+
+        Block 0: Superblock contains:
+            magic number (4 bytes)
+            number of blocks (4 bytes)
+            number of inodes (4 bytes)
+            free inode byte vector (128 bytes): 1 for free and 0 for not free
+            root directory inode (32 bytes)
+
+        Block 1: Freeblock contains:
+            free block bit vector (4096 bits): 1 for free and 0 for not free
+
+        Blocks 2 to 9: Inode blocks:
+            128 inodes (16 inodes per block)
+
+    4086 Data blocks:
+    
+        Block 10: 
+            Reserved for root directory data block
+
+        Blocks 11 to 4095: 
+            Data blocks free to be used for files and directories
